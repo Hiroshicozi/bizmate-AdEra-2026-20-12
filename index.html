@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdEra | 今を整え、事業を動かす"機能"</title>
+  <meta name="description" content="足りないのは、人じゃない。今を整え、事業を動かす"機能"だ。AdEraは、経営と現場の間を整え、人の可能性を広げ、事業を前に動かします。" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:       #2778d8;
+      --blue-mid:   #1e62b8;
+      --blue-light: #e8f1fc;
+      --teal:       #7fcfbf;
+      --teal-dark:  #4db8a4;
+      --navy:       #12243e;
+      --navy-mid:   #1c3352;
+      --text:       #1a2e42;
+      --sub:        #445566;
+      --sub-light:  rgba(255,255,255,.78);
+      --line:       rgba(39,120,216,.08);
+      --bg:         #ffffff;
+      --bg-soft:    rgba(255,255,255,.72);
+      --em-blue:    #1a5fc0;
+      --max:        1120px;
+      --r:          10px;
+      --r-lg:       18px;
+      --shadow:     0 4px 24px rgba(39,120,216,.08);
+      --shadow-lg:  0 12px 40px rgba(39,120,216,.10);
+      --sans:       'DM Sans', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Meiryo', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--sans); color: var(--text);
+      background: linear-gradient(135deg, #fde8eb 0%, #fdf6f7 30%, #f0faf4 70%, #daf2e4 100%);
+      background-attachment: fixed;
+      line-height: 1.85; letter-spacing: 0.015em; -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    strong { font-weight: 700; color: var(--em-blue); }
+    .problem strong, .service strong, .contact strong { color: var(--teal); }
+
+    .wrap { width: min(100% - 40px, var(--max)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue); }
+    .eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--blue); }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 72px 0; }
+
+    /* HEADER */
+    .hdr { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(245,184,192,.25); }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 68px; }
+    .brand-mark { display: flex; align-items: center; gap: 10px; }
+    .brand-logo { height: 32px; width: auto; object-fit: contain; }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a { font-size: 0.97rem; color: var(--sub); transition: color .2s; }
+    .nav a:hover { color: var(--blue); }
+    .nav-cta { display: inline-flex; align-items: center; font-size: 0.95rem; font-weight: 600; padding: 9px 20px; border-radius: 999px; background: var(--blue); color: #fff; transition: background .2s, transform .15s; }
+    .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero { position: relative; overflow: hidden; background: transparent; padding: 96px 0 88px; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(39,120,216,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(39,120,216,.06) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
+    .hero::after { content: ''; position: absolute; top: -140px; right: -80px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(127,207,191,.18) 0%, transparent 68%); pointer-events: none; }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-copy { position: relative; max-width: 900px; margin: 0 auto; text-align: center; }
+    .hero-bg-logo { display: none; }
+    .hero-eyebrow { display: block; margin-bottom: 14px; text-align: left; }
+    .contact-logo { height: 36px; width: auto; object-fit: contain; margin-bottom: 22px; }
+    .hero-h1 { font-family: var(--sans); font-size: clamp(2.4rem, 4.8vw, 4rem); line-height: 1.2; letter-spacing: -.02em; color: var(--navy); margin-bottom: 28px; font-weight: 700; }
+    .hero-h1 em { font-style: italic; color: var(--blue); }
+    .hero-sub { font-size: 1.2rem; font-weight: 600; color: var(--blue-mid); margin-bottom: 16px; line-height: 1.5; }
+    .hero-desc { font-size: 1rem; color: var(--sub); line-height: 1.85; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-size: 1.0rem; font-weight: 600; padding: 13px 28px; border-radius: var(--r); transition: transform .15s, box-shadow .2s, background .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 6px 20px rgba(39,120,216,.25); }
+    .btn-primary:hover { background: var(--blue-mid); box-shadow: 0 10px 28px rgba(39,120,216,.35); }
+    .btn-outline { border: 1px solid rgba(39,120,216,.25); background: rgba(255,255,255,.9); color: var(--blue); }
+    .btn-outline:hover { border-color: rgba(39,120,216,.5); background: var(--blue-light); }
+    .btn-brand { background: var(--teal); color: #fff; box-shadow: 0 6px 20px rgba(127,207,191,.35); }
+    .btn-brand:hover { background: var(--teal-dark); box-shadow: 0 10px 28px rgba(127,207,191,.45); }
+    .btn-ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .btn-ghost:hover { background: rgba(255,255,255,.14); }
+
+    /* PROBLEM */
+    .problem {
+      position: relative;
+      padding: 72px 0;
+      background:
+        radial-gradient(ellipse at top left,    rgba(39,120,216,.38) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(77,184,164,.26) 0%, transparent 55%),
+        linear-gradient(160deg, #0f1f38 0%, #12243e 50%, #0e2236 100%);
+      overflow: hidden;
+    }
+    /* グリッドオーバーレイ */
+    .problem::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    /* 右上アクセントブラー */
+    .problem::after {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,184,164,.26) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .problem-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .problem-label { font-size: 0.72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .problem-h { font-family: var(--sans); font-size: 1.9rem; color: #fff; line-height: 1.3; font-weight: 700; }
+    .problem-body { font-size: 1.05rem; color: var(--sub-light); line-height: 1.85; }
+    .problem-body + .problem-body { margin-top: 14px; }
+
+    /* CONCEPT */
+    .concept {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at top left,    rgba(39,120,216,.38) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(77,184,164,.26) 0%, transparent 55%),
+        linear-gradient(160deg, #0f1f38 0%, #12243e 50%, #0e2236 100%);
+      backdrop-filter: none;
+    }
+    .concept::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .concept::after {
+      content: '';
+      position: absolute; bottom: -80px; right: -80px;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,184,164,.26) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .concept .wrap { position: relative; z-index: 1; }
+    .concept-grid { display: grid; grid-template-columns: 35fr 65fr; gap: 60px; align-items: center; }
+    .concept-h { font-family: var(--sans); font-size: clamp(1.7rem, 2.8vw, 2.5rem); line-height: 1.3; font-weight: 700; color: #fff; margin: 16px 0 0; }
+    .concept-lead { font-size: 1.05rem; color: var(--sub-light); line-height: 1.9; }
+    .concept-lead + .concept-lead { margin-top: 18px; }
+    .concept-lead strong { color: var(--teal); font-weight: 700; }
+    .concept .eyebrow { color: var(--teal); }
+    .concept .eyebrow::before { background: var(--teal); }
+    .concept-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 18px 20px;
+    }
+    .concept-card-body {
+      font-size: 1.05rem; color: #ffffff;
+      line-height: 1.85; margin: 0;
+    }
+    .concept-card-body strong { color: #ffffff; }
+
+    /* ABOUT */
+    .about { background: rgba(255,255,255,.55); }
+    .about-intro { font-size: 1.05rem; color: var(--sub); line-height: 1.9; max-width: 700px; margin-bottom: 40px; }
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .about-card { background: rgba(255,255,255,.80); border: 1px solid rgba(245,184,192,.3); border-radius: var(--r-lg); padding: 30px 26px; }
+    .card-num { font-size: 0.72rem; font-weight: 600; letter-spacing: .12em; color: var(--blue); margin-bottom: 12px; }
+    .card-h { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .card-p { font-size: 1.0rem; color: var(--sub); line-height: 1.85; }
+
+    /* SERVICE */
+    .service {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at top right,   rgba(39,120,216,.34) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom left,  rgba(77,184,164,.22) 0%, transparent 55%),
+        linear-gradient(150deg, #0e2236 0%, #12243e 45%, #0f1f38 100%);
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+    /* グリッドオーバーレイ */
+    .service::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    /* 左下アクセントブラー */
+    .service::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(39,120,216,.28) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .service .wrap { position: relative; z-index: 1; }
+    .service .eyebrow { color: var(--teal); }
+    .service .eyebrow::before { background: var(--teal); }
+    .service-h { font-family: var(--sans); font-size: clamp(1.7rem, 2.8vw, 2.5rem); line-height: 1.3; font-weight: 700; color: #fff; margin: 16px 0 12px; }
+    .service-checks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+      max-width: 560px;
+    }
+    .service-checks li {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.7;
+      padding-left: 44px;
+      position: relative;
+    }
+    .service-checks li::before {
+      content: '☑';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--teal);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
+    .svc-card { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-lg); padding: 30px 26px; transition: background .2s, border-color .2s; }
+    .svc-card:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.2); }
+    .svc-icon { width: 52px; height: 52px; border-radius: var(--r); background: rgba(39,120,216,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .svc-icon svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .svc-h { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .svc-p { font-size: 1.0rem; color: var(--sub-light); line-height: 1.85; }
+    .svc-tag {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--teal);
+      padding: 6px 12px;
+      border: 1px solid rgba(127,207,191,.35);
+      border-radius: var(--r);
+      display: inline-block;
+      background: rgba(127,207,191,.08);
+    }
+    .svc-note { font-size: 1.2rem; font-weight: 600; color: rgba(255,255,255,.8); margin-bottom: 28px; }
+
+    /* ANXIETY */
+    .anxiety { background: rgba(255,255,255,.68); }
+    .anxiety-single-card {
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(39,120,216,.12);
+      border-radius: var(--r-lg);
+      padding: 48px 40px;
+      margin-bottom: 48px;
+    }
+    /* 吹き出しレイアウト */
+    .bubble-layout {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .bubble-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .bubble {
+      background: var(--blue-light);
+      border: 1px solid rgba(39,120,216,.15);
+      border-radius: 14px;
+      padding: 0 20px;
+      font-size: 1.0rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.65;
+      position: relative;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    /* 左列の吹き出し尾（右向き） */
+    .bubble-col:first-child .bubble::after {
+      content: '';
+      position: absolute;
+      right: -10px; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: var(--blue-light);
+    }
+    /* 右列の吹き出し尾（左向き） */
+    .bubble-col:last-child .bubble::after {
+      content: '';
+      position: absolute;
+      left: -10px; top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: var(--blue-light);
+    }
+    /* 中央クエスチョンマーク */
+    .bubble-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+    }
+    .bubble-qmark {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 700;
+      color: #fff;
+      box-shadow: 0 8px 28px rgba(39,120,216,.25);
+    }
+    @media (max-width: 900px) {
+      .bubble-layout { grid-template-columns: 1fr; }
+      .bubble-center { display: none; }
+      .bubble::after { display: none; }
+    }
+    .anxiety-footer {
+      border-top: 1px solid rgba(39,120,216,.10);
+      padding-top: 32px;
+      text-align: center;
+    }
+    .anxiety-conclusion {
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--navy); line-height: 1.7;
+    }
+    .anxiety-conclusion strong { color: var(--em-blue); }
+    @media (max-width: 900px) {
+      .anxiety-grid { grid-template-columns: 1fr; }
+    }
+    .scope { background: rgba(255,255,255,.60); }
+    .scope-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .scope-card { background: rgba(255,255,255,.82); border: 1px solid rgba(200,232,208,.5); border-radius: var(--r-lg); padding: 26px 22px; transition: box-shadow .2s, transform .15s; }
+    .scope-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .scope-card-h { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .scope-list { display: flex; flex-direction: column; gap: 8px; }
+    .scope-list li { font-size: 0.97rem; color: var(--sub); padding-left: 14px; position: relative; }
+    .scope-list li::before { content: ''; position: absolute; left: 0; top: .58em; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); }
+
+    /* USE CASES */
+    .cases { background: rgba(255,255,255,.50); }
+    .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .case-card { background: rgba(255,255,255,.82); border: 1px solid rgba(245,184,192,.25); border-radius: var(--r-lg); padding: 30px 26px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; transition: box-shadow .2s, transform .15s; }
+    .case-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .case-num { font-size: 0.72rem; font-weight: 600; letter-spacing: .12em; color: var(--blue); }
+    .case-h { font-size: 1.02rem; font-weight: 700; color: var(--navy); }
+    .case-p { font-size: 1.0rem; color: var(--sub); line-height: 1.85; }
+    .case-situation { color: var(--sub); }
+    .case-solution {
+      font-size: 0.97rem; font-weight: 600;
+      color: var(--em-blue); line-height: 1.8;
+      padding-top: 14px;
+      border-top: 1px solid rgba(39,120,216,.12);
+      margin-top: 4px;
+    }
+    .case-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; background: var(--blue-light); color: var(--blue); }
+
+    /* COMPANY */
+    .company { background: rgba(255,255,255,.60); }
+    .company-table { width: 100%; border-collapse: collapse; max-width: 860px; }
+    .company-table th, .company-table td { text-align: left; vertical-align: top; padding: 18px 0; border-bottom: 1px solid rgba(39,120,216,.08); font-size: 1.01rem; }
+    .company-table th { width: 140px; color: var(--navy); font-weight: 700; padding-right: 32px; white-space: nowrap; }
+    .company-table td { color: var(--sub); line-height: 2.0; }
+
+    /* CONTACT */
+    .contact {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0;
+      background:
+        radial-gradient(ellipse at top right,   rgba(39,120,216,.34) 0%, transparent 55%),
+        radial-gradient(ellipse at bottom left,  rgba(77,184,164,.22) 0%, transparent 55%),
+        linear-gradient(150deg, #0e2236 0%, #12243e 45%, #0f1f38 100%);
+    }
+    .contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .contact::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(39,120,216,.28) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .contact .wrap { position: relative; z-index: 1; }
+    .contact .eyebrow { color: var(--teal); }
+    .contact .eyebrow::before { background: var(--teal); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .contact-h { font-family: var(--sans); font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.3; font-weight: 700; color: #fff; margin: 16px 0 22px; }
+    .contact-p { font-size: 1.05rem; color: var(--sub-light); line-height: 1.85; }
+    .contact-p + .contact-p { margin-top: 16px; }
+    .contact-list { margin: 28px 0; display: flex; flex-direction: column; gap: 12px; }
+    .contact-list li { font-size: 1.1rem; color: #ffffff; padding-left: 18px; position: relative; line-height: 1.75; font-weight: 500; }
+    .contact-list li::before { content: ''; position: absolute; left: 0; top: .65em; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+    .contact-buttons { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .contact-mail { margin-top: 20px; }
+    .contact-mail a { font-size: 1.0rem; color: rgba(255,255,255,.48); }
+    .contact-mail a:hover { color: rgba(255,255,255,.8); }
+
+    /* FOOTER */
+    .footer { background: #0c1c2e; border-top: 1px solid rgba(255,255,255,.06); padding: 30px 0 38px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { display: flex; align-items: center; gap: 8px; }
+    .footer-logo { height: 26px; width: auto; object-fit: contain; }
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-nav a { font-size: 0.85rem; color: rgba(255,255,255,.42); transition: color .2s; }
+    .footer-nav a:hover { color: rgba(255,255,255,.75); }
+    .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,.3); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .hero-grid,
+      .problem-inner, .concept-grid, .contact-layout, .about-grid, .svc-grid, .scope-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .hero { padding: 72px 0 64px; }
+      .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 72px 0; }
+      .company-table th, .company-table td { display: block; width: 100%; padding: 8px 0; }
+      .company-table th { border-bottom: none; padding-bottom: 2px; }
+    }
+
+    /* ANIMATIONS */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hdr">
+    <div class="wrap hdr-inner">
+      <a href="#top" class="brand-mark" aria-label="AdEra トップへ">
+        <img src="logo-h-white.jpg" alt="AdEra" class="brand-logo" />
+      </a>
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <a href="#concept">Concept</a>
+        <a href="#service">Service</a>
+        <a href="#cases">Use Cases</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="https://form.run/@adera-Q35Ea5hln4meg35TwhG8" target="_blank" rel="noopener" class="nav-cta">無料相談する</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="wrap" style="position:relative;">
+        <!-- 背景ロゴ -->
+        <img src="bizmate-logo.png" alt="" class="hero-bg-logo" aria-hidden="true" />
+        <!-- コピー -->
+        <div class="hero-copy fade-up" style="position:relative; z-index:2;">
+          <p class="eyebrow hero-eyebrow">Business Execution Partner</p>
+          <p style="font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:20px; margin-top:4px;">スポット部下サービス <span style="color:var(--blue); font-size:1.5rem;">BizMate</span></p>
+          <h1 class="hero-h1">足りないのは、人じゃない。<br><br>今を整え、<br>事業を動かす<em>"機能"</em>だ。</h1>
+          <p class="hero-sub"><strong>いい戦略。でも、それ誰がやるの？</strong></p>
+          <p class="hero-desc">
+            やるべきことは見えているのに、誰も手を動かせていない。<br>
+            事業が止まる理由の多くは、<strong>"人不足"ではなく"構造の未整理"</strong>にある。
+          </p>
+          <p style="font-size:1.15rem; color:#1d6b45; margin-bottom:16px; font-weight:700;">≪新規事業・営業・開発を動かしたい、責任者の方へ≫</p>
+          <div class="hero-actions">
+            <a href="https://form.run/@adera-Q35Ea5hln4meg35TwhG8" target="_blank" rel="noopener" class="btn btn-primary">30分で、止まっている理由を特定する</a>
+            <a href="mailto:info@adera.co.jp" class="btn btn-outline">メールでお問合せ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem" aria-label="課題提起">
+      <div class="wrap">
+        <div class="problem-inner">
+          <div class="fade-up">
+            <p class="problem-label">The Problem</p>
+            <h2 class="problem-h">誰もサボっていない。<br>でも、なぜか進まない。</h2>
+          </div>
+          <div class="fade-up" style="transition-delay:.1s;">
+            <p class="problem-body">戦略はある。やるべきことも見えている。それでも進まない。</p>
+            <p class="problem-body">その多くは、人が足りないからではなく、<strong>役割・優先順位・実行体制が整理されていない</strong>ことにあります。採用を増やしても、外注を増やしても、<strong>土台が整っていなければ前には進みません。</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 不安セクション -->
+    <section class="section anxiety">
+      <div class="wrap">
+        <div class="fade-up" style="margin-bottom:40px;">
+          <span class="eyebrow">Question</span>
+          <p style="margin-top:16px; font-size:1.2rem; font-weight:700; color:var(--navy); line-height:1.8;">いま、立てるべき問いがあります。</p>
+        </div>
+        <div class="anxiety-single-card fade-up" style="transition-delay:.08s;">
+          <div class="bubble-layout">
+            <!-- 左列 -->
+            <div class="bubble-col">
+              <div class="bubble">このまま進めて、<br>本当に成果につながる設計になっているか。</div>
+              <div class="bubble" style="margin-right: 32px;">外注や採用を重ねても、<br>なぜうまく機能しないのか。</div>
+              <div class="bubble">コストと成果が見合わず、<br>施策が先送りになっていないか。</div>
+            </div>
+            <!-- 中央 クエスチョンマーク -->
+            <div class="bubble-center">
+              <div class="bubble-qmark">?</div>
+            </div>
+            <!-- 右列 -->
+            <div class="bubble-col">
+              <div class="bubble">誰が実行を担うのか、<br>明確になっているか。</div>
+              <div class="bubble" style="margin-left: 32px;">戦略と現場の間に、<br>気づかないズレが生まれていないか。</div>
+              <div class="bubble">いまの体制で、<br>継続的に回る仕組みになっているか。</div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid rgba(39,120,216,.12); margin-top: 32px; padding-top: 24px; text-align: center;">
+            <p class="anxiety-conclusion">この停滞を放置すれば、事業は確実に遅れます。いま、一度立ち止まり、<strong>構造から見直しませんか？</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="concept" class="section concept">
+      <div class="wrap">
+        <div class="concept-grid">
+          <div class="fade-up">
+            <span class="eyebrow">Concept</span>
+            <h2 class="concept-h">経営と現場の間を整え、<br>人の可能性を広げ、<br>事業を前に動かす。</h2>
+          </div>
+          <div class="fade-up" style="transition-delay:.1s;">
+            <div class="concept-card">
+              <p class="concept-card-body">戦略はある。やるべきことも見えている。それでも進まない。</p>
+              <br>
+              <p class="concept-card-body">その多くは、人が足りないからではなく、<br><strong>役割・優先順位・実行体制が整理されていない</strong>ことにあります。</p>
+              <br>
+              <p class="concept-card-body">採用を増やしても、外注を増やしても、<br><strong>土台が整っていなければ前には進みません。</strong></p>
+              <br>
+              <p class="concept-card-body"><strong>AdEraは、事業の"今"を整え、<br>次のステージへ動かすための存在です。</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="wrap">
+        <span class="eyebrow fade-up">About</span>
+        <h2 class="concept-h fade-up" style="margin:16px 0 28px; color:var(--navy);">私たちについて</h2>
+        <p class="about-intro fade-up" style="text-align:center; max-width:100%;">事業を前に進めたい。<br>その強い意思を持つリーダーほど、理想と現実のギャップに直面します。<br>やりたいことが現場まで届かず、どこか空回りしてしまう。<br>私たちはこれまで、そんな状況を数多く見てきました。</p>
+        <div class="about-grid">
+          <article class="about-card fade-up">
+            <p class="card-num">01</p>
+            <h3 class="card-h">理想と現実のギャップ</h3>
+            <p class="card-p">意思はあるのに、現場に届かない。やりたいことが、誰の手で実行されるのかが曖昧なまま、止まってしまう。</p>
+          </article>
+          <article class="about-card fade-up" style="transition-delay:.08s;">
+            <p class="card-num">02</p>
+            <h3 class="card-h">問題の本質は"仕組み"</h3>
+            <p class="card-p">足りないのは人の能力ではなく、無理なく動ける「仕組み」です。属人的なやり方を、誰もが動けるプロセスへ変えることで、事業は初めて前に進みます。</p>
+          </article>
+          <article class="about-card fade-up" style="transition-delay:.16s;">
+            <p class="card-num">03</p>
+            <h3 class="card-h">隣で実行まで担う</h3>
+            <p class="card-p">私たちは外から助言するだけでなく、現場に入り、リーダーのすぐ隣で手を動かします。経営の想いを形にし、構造を整え、人を活かし、事業を動かします。</p>
+          </article>
+        </div>
+        <p style="margin-top:40px; font-weight:800; font-size:1.3rem; color:var(--em-blue); text-align:center; line-height:1.7;" class="fade-up">リーダーが創造する価値の実現に向け、<br>身近な距離感で事業を一歩前に推進します。</p>
+      </div>
+    </section>
+
+    <section id="service" class="section service">
+      <div class="wrap">
+        <span class="eyebrow fade-up">Service — BizMate</span>
+        <h2 class="service-h fade-up">採用でも、外注でもない。<br>スポット部下として事業を動かす。</h2>
+        <ul class="service-checks fade-up">
+          <li>採用したいが、要件定義の時点で止まる。</li>
+          <li>外注したいが、切り出し方が分からない。</li>
+          <li>コンサルに頼んでも、現場が動かない。</li>
+        </ul>
+        <div class="svc-grid">
+          <article class="svc-card fade-up">
+            <div class="svc-header">
+              <div class="svc-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                  <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                </svg>
+              </div>
+              <h3 class="svc-h">整える</h3>
+            </div>
+            <p class="svc-p">経営の意思、現場の状況、役割分担、進行フロー。止まりやすいポイントを見極め、動ける状態をつくります。</p>
+            <p class="svc-tag">役割・優先順位・実行フローを再設計</p>
+          </article>
+          <article class="svc-card fade-up" style="transition-delay:.08s;">
+            <div class="svc-header">
+              <div class="svc-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <h3 class="svc-h">動かす</h3>
+            </div>
+            <p class="svc-p">設計だけでは終わりません。実務・推進・進捗管理まで踏み込み、事業が前に進むところまで伴走します。</p>
+            <p class="svc-tag">実務・進行管理・意思決定支援まで実行</p>
+          </article>
+          <article class="svc-card fade-up" style="transition-delay:.16s;">
+            <div class="svc-header">
+              <div class="svc-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                  <polyline points="17 6 23 6 23 12"/>
+                </svg>
+              </div>
+              <h3 class="svc-h">広げる</h3>
+            </div>
+            <p class="svc-p">今いる人の可能性を活かしながら、必要な機能を適切なタイミングで補い、次の成長フェーズへつなげます。</p>
+            <p class="svc-tag">既存人材＋外部機能で成長を加速</p>
+          </article>
+        </div>
+        <p class="svc-note fade-up"><strong>必要な機能を、必要なタイミングで。採用せずに、事業を前に進めるという選択肢です。</strong></p>
+        <a href="https://form.run/@adera-Q35Ea5hln4meg35TwhG8" target="_blank" rel="noopener" class="btn btn-brand fade-up">30分で、止まっている理由を特定する</a>
+      </div>
+    </section>
+
+    <section id="cases" class="section cases">
+      <div class="wrap">
+        <span class="eyebrow fade-up">Use Cases</span>
+        <h2 class="concept-h fade-up" style="margin:16px 0 28px; color:var(--navy);">こんな状況で、使われます。</h2>
+        <div class="cases-grid">
+          <article class="case-card fade-up">
+            <span class="case-num">01</span>
+            <h3 class="case-h">事業開発・構想段階</h3>
+            <p class="case-p case-situation">アイデアはある。でも、前に進めない。<br>方向性は見えているが、何から手をつけるべきか曖昧なまま。<br>議論は進んでいるのに、意思決定も実行も止まっている。</p>
+            <p class="case-solution">事業構造を整理し、優先順位を明確に。<br>最初に動かすべき一手まで具体化し、実行に移します。</p>
+          </article>
+          <article class="case-card fade-up" style="transition-delay:.06s;">
+            <span class="case-num">02</span>
+            <h3 class="case-h">市場調査・営業体制の立ち上げ</h3>
+            <p class="case-p case-situation">売れるか分からないまま、動き出してしまっている。<br>顧客像やニーズが曖昧で、営業も手探り状態。<br>属人的な動きに頼り、再現性がない。</p>
+            <p class="case-solution">市場理解から仮説設計、営業設計まで一気通貫で整理。<br>売れる構造をつくり、現場が回る状態まで落とし込みます。</p>
+          </article>
+          <article class="case-card fade-up" style="transition-delay:.12s;">
+            <span class="case-num">03</span>
+            <h3 class="case-h">システム開発・組織開発</h3>
+            <p class="case-p case-situation">作りたい。でも、その開発は本当に必要ですか？<br>要件が曖昧なまま進めると、使われないシステムが出来上がる。<br>開発会社に任せても、それっぽいものができるだけで終わる。</p>
+            <p class="case-solution">プロダクト・業務・ユーザーを整理し、<br>作るべきものと作らなくていいものを明確にします。</p>
+          </article>
+          <article class="case-card fade-up" style="transition-delay:.18s;">
+            <span class="case-num">04</span>
+            <h3 class="case-h">成長・加速フェーズ</h3>
+            <p class="case-p case-situation">伸び始めたが、このままスケールできるか不安。<br>売上は立ってきたが、組織・仕組みが追いついていない。<br>属人化やボトルネックが見え始めている。</p>
+            <p class="case-solution">事業・組織・オペレーションを再設計し、<br>スケールできる構造へと引き上げます。</p>
+          </article>
+        </div>
+        <!-- 対応領域カード -->
+        <div class="scope-grid fade-up" style="margin-top:32px;">
+          <article class="scope-card">
+            <h3 class="scope-card-h">事業推進</h3>
+            <ul class="scope-list"><li>新規事業立ち上げ</li><li>営業推進</li></ul>
+          </article>
+          <article class="scope-card">
+            <h3 class="scope-card-h">組織・人事</h3>
+            <ul class="scope-list"><li>採用設計・改善</li><li>組織・役割整理</li></ul>
+          </article>
+          <article class="scope-card">
+            <h3 class="scope-card-h">業務設計</h3>
+            <ul class="scope-list"><li>業務整理</li><li>仕組み化</li></ul>
+          </article>
+          <article class="scope-card">
+            <h3 class="scope-card-h">開発・プロダクト</h3>
+            <ul class="scope-list"><li>PoC / 小規模開発</li><li>PdM / PM支援</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="company" class="section company">
+      <div class="wrap">
+        <span class="eyebrow fade-up">Company</span>
+        <h2 class="concept-h fade-up" style="margin:16px 0 28px;">会社概要</h2>
+        <div class="fade-up">
+          <table class="company-table" aria-label="会社概要">
+            <tbody>
+              <tr><th>社名</th><td>AdEra株式会社 / AdEra Co.,Ltd.</td></tr>
+              <tr><th>代表</th><td>代表取締役 CEO 大石公史 / Hiroshi Oishi</td></tr>
+              <tr><th>所在地</th><td>〒150-0021 東京都渋谷区恵比寿西2丁目4番8号 ウィンド恵比寿ビル8F</td></tr>
+              <tr><th>設立年月</th><td>2025年7月</td></tr>
+              <tr><th>顧問税理士</th><td>税理士法人 strategist</td></tr>
+              <tr><th>加盟団体</th><td>一般社団法人 AIUEO</td></tr>
+              <tr>
+                <th>事業内容</th>
+                <td style="display:flex; gap:32px; align-items:center;">
+                  <div>
+                    事業推進・実行支援事業<br>
+                    定額制スポット部下サービス「BizMate」の企画・運営<br>
+                    キャリア支援事業 / 教育DX・人材育成事業<br>
+                    プロダクト開発支援事業 / システム開発受託事業
+                  </div>
+                  <img src="bizmate-logo-cropped.png" alt="BizMate" style="height:90px; width:auto; object-fit:contain; flex-shrink:0; border-radius:8px;" />
+                </td>
+              </tr>
+              <tr><th>お問合せ</th><td><a href="mailto:info@adera.co.jp" style="color:var(--blue); font-weight:600;">info@adera.co.jp</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="contact-layout">
+          <div class="fade-up">
+            <img src="logo-h-white.jpg" alt="AdEra" class="contact-logo" />
+            <span class="eyebrow">Contact</span>
+            <h2 class="contact-h">まずは、今の状況を<br>聞かせてください。</h2>
+          </div>
+
+          <div class="fade-up" style="transition-delay:.1s;">
+            <ul class="contact-list" style="margin-top:0;">
+              <li>事業構想はあるが、社内リソースだけでは前に進まない</li>
+              <li>進めたいのに、専門人材の採用が追いつかない</li>
+              <li>高額な外注やコンサルを使っても、現場が動かなかった</li>
+              <li>営業と開発が噛み合わず、前に進まない</li>
+              <li>市場調査や営業活動が、思うように進まない</li>
+            </ul>
+            <div class="contact-buttons">
+              <a href="https://form.run/@adera-Q35Ea5hln4meg35TwhG8" target="_blank" rel="noopener" class="btn btn-brand">30分で、止まっている理由を特定する</a>
+              <a href="mailto:info@adera.co.jp" class="btn btn-ghost">メールでお問合せ</a>
+            </div>
+            <div class="contact-mail">
+              <a href="mailto:info@adera.co.jp">info@adera.co.jp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="logo-h-white.jpg" alt="AdEra" class="footer-logo" />
+      </div>
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <a href="#concept">Concept</a>
+        <a href="#service">Service</a>
+        <a href="#cases">Use Cases</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">© AdEra All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.fade-up');
+      if (!els.length) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
